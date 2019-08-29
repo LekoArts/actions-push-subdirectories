@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 FOLDER=$1
 GITHUB_USERNAME=$2
 STARTER_NAME="${3:-'name'}"
