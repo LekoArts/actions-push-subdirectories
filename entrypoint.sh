@@ -8,7 +8,9 @@ STARTER_NAME="${3:-name}"
 BRANCH_NAME="${4:-main}"
 BASE=$(pwd)
 
-git config --global user.email "johno-actions-push-subdirectories@example.org"
+EMAIL=${GITHUB_EMAIL:-username@example.com}
+
+git config --global user.email "$EMAIL"
 git config --global user.name "$GITHUB_USERNAME"
 
 echo "Cloning folders in $FOLDER and pushing to $GITHUB_USERNAME"
@@ -33,13 +35,6 @@ for folder in $FOLDER/*; do
   cd $CLONE_DIR
   find . | grep -v ".git" | grep -v "^\.*$" | xargs rm -rf # delete all files (to handle deletions in monorepo)
   cp -r $BASE/$folder/. .
-
-  # generate a new yarn.lock file based on package-lock.json unless you're in a workspace
-  if [ "$IS_WORKSPACE" = null ]; then
-    echo "  Regenerating yarn.lock"
-    rm -rf yarn.lock
-    yarn
-  fi
 
   # Commit if there is anything to
   if [ -n "$(git status --porcelain)" ]; then
