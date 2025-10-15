@@ -1,4 +1,4 @@
-FROM node:14-slim
+FROM node:24
 
 LABEL repository="https://github.com/LekoArts/actions-push-subdirectories"
 LABEL homepage="https://github.com/LekoArts/actions-push-subdirectories"

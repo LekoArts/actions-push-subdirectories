@@ -20,12 +20,12 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: publish:starters
-        uses: johno/actions-push-subdirectories@master
+        uses: LekoArts/actions-push-subdirectories@master
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          args: examples johno
+          args: examples LekoArts
 ```
 
 The `GITHUB_TOKEN` will automatically be defined, the `API_TOKEN_GITHUB` needs to be set in the `Secrets` section of your repository options. You can retrieve the `API_TOKEN_GITHUB` [here](https://github.com/settings/tokens) (set the `repo` permission).
